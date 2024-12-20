@@ -16,7 +16,7 @@
 * Click Upload to complete.
 
 ## Feature Setup:
-**3. Handle Permissions (IAM & Bucket Policies)
+3. Handle Permissions (IAM & Bucket Policies)
 S3 permissions are handled using:
 * IAM Policies: Manage access to users, roles, and groups.
 * Bucket Policies: JSON policies applied directly to a bucket for broader control.
@@ -33,6 +33,27 @@ b. Use the following JSON for S3 access (replace **Bucket-Name** with your bucke
     {
       "Effect": "Allow",
       "Action": ["s3:PutObject", "s3:GetObject", "s3:DeleteObject"],
+      "Resource": "arn:aws:s3:::bucket-name/*"
+    }
+  ]
+}
+
+```
+Attach the policy ta an IAM user, role, or group.
+
+## Steps to Apply Bucket Policies:
+Go to your **S3 Bucket -> Permissions -> Bucket Policy.**
+Add the following policy to allow read/write for a specific IAM role:-
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowAccessForRole",
+      "Effect": "Allow",
+      "Principal": {"AWS": "arn:aws:iam::account-id:role/role-name"},
+      "Action": ["s3:PutObject", "s3:GetObject"],
       "Resource": "arn:aws:s3:::bucket-name/*"
     }
   ]
