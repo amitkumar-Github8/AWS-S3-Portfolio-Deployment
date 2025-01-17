@@ -1,0 +1,13 @@
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1737045471869",
+    "Statement": [
+        {
+            "Sid": "Stmt1737045470127",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::demo-s3-hosting/*"
+        }
+    ]
+}
